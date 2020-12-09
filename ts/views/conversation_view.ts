@@ -1720,7 +1720,16 @@ Whisper.ConversationView = Whisper.View.extend({
   },
 
   async handleImageAttachment(file: any) {
+
     const blurHash = await window.imageToBlurHash(file);
+    const isCat = await window.isCat(file);
+
+    if (isCat){
+      console.log("Cat image identified; returning without displaying the image, and displaying an 'Unable to load image' banner instead.");
+      this.showToast(Whisper.DangerousFileTypeToast);
+      return;
+    }
+
     if (MIME.isJPEG(file.type)) {
       const rotatedDataUrl = await window.autoOrientImage(file);
       const rotatedBlob = window.dataURLToBlobSync(rotatedDataUrl);

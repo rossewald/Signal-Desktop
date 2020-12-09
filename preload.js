@@ -381,10 +381,13 @@ try {
 
   const { autoOrientImage } = require('./js/modules/auto_orient_image');
   const { imageToBlurHash } = require('./ts/util/imageToBlurHash');
+  const { isCat } = require('./ts/util/isCat');
+
 
   window.autoOrientImage = autoOrientImage;
   window.dataURLToBlobSync = require('blueimp-canvas-to-blob');
   window.imageToBlurHash = imageToBlurHash;
+  window.isCat = isCat;
   window.emojiData = require('emoji-datasource');
   window.filesize = require('filesize');
   window.libphonenumber = require('google-libphonenumber').PhoneNumberUtil.getInstance();
